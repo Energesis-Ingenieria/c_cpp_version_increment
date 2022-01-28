@@ -1,4 +1,4 @@
-# PlatformIO Version Increment
+#Version Increment for C/C++ projects
 Simple version increment script for C/C++ projects.  
   
 _Some IDE does not have a tool to automatically increment the version number of an app when building it. So I decided to take sblantipodi's idea and use it for other IDEs._
