@@ -1,43 +1,29 @@
 # PlatformIO Version Increment
-Simple version increment script for PlatformIO.  
+Simple version increment script for C/C++ projects.  
   
-_PlatformIO does not have a tool to automatically increment the version number of an app when building it or when uploading it to a microcontroller so I decided to write a script to do it._
+_Some IDE does not have a tool to automatically increment the version number of an app when building it. So I decided to take sblantipodi's idea and use it for other IDEs._
 
-[![GitHub version](https://img.shields.io/github/v/release/sblantipodi/platformio_version_increment.svg)](https://img.shields.io/github/v/release/sblantipodi/platformio_version_increment.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/sblantipodi/platformio_version_increment/graphs/commit-activity)
-[![DPsoftware](https://img.shields.io/static/v1?label=DP&message=Software&color=orange)](https://www.dpsoftware.org)
-
-If you like **PlatformIO Version Increment**, give it a star, or fork it and contribute!
-
-[![GitHub stars](https://img.shields.io/github/stars/sblantipodi/platformio_version_increment.svg?style=social&label=Star)](https://github.com/sblantipodi/platformio_version_increment/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/sblantipodi/platformio_version_increment.svg?style=social&label=Fork)](https://github.com/sblantipodi/platformio_version_increment/network)
-
-## Credits
-- Davide Perini
+[![Energesis Ingeniería](https://img.shields.io/static/v1?label=Energesis&message=Software&color=orange)](https://www.dpsoftware.org)
 
 ## How To Use
 1) From the root of your project run
 ```
-git submodule add https://github.com/sblantipodi/platformio_version_increment.git platformio_version_increment
+git submodule add https://github.com/sblantipodi/platformio_version_increment.git cpp_version_increment
 ```
 
-2) Add the following in your `platformio.ini`:
-```
-extra_scripts = 
-   pre:platformio_version_increment/version_increment_pre.py
-   post:platformio_version_increment/version_increment_post.py
-```
+2) Configure your IDE for:
+    - execute `cpp_version_increment/version_increment_pre.py` before compile
+    - execute `cpp_version_increment/version_increment_post.py` after compile
 
-3) Add `#include "Version.h"` to the top of your main source file (i.e. `main.cpp`). 
-
-4) Build your software for your microcontroller. In the root of your project you will find two files:
-- version
-- include/Version.h 
+3) Add `#include "Version.h"` to any source file or header file that need to know the version (i.e. `main.cpp`)
+4) Build your software . In the root of your project you will find two files:
+    - version
+    - include/Version.h 
 
 The `version` file will default to `0.1.0`, but you can edit this with the version number you wish to start incrementing from.
 
-Every completed upload will trigger a +1 on the patch number.
+Every completed build will trigger a +1 on the patch number.
 
 In the `Version.h` file (which you'll need to include in order to access the incrementing version and timestamp variables) you'll have this:
 ```c++
@@ -54,21 +40,15 @@ You now have auto-incrementing VERSION and BUILD_TIMESTAMP variables you can use
 
 For example:
 ```c++
-Serial.println("Project version: " + String(VERSION));
-Serial.println("Build timestamp:" + String(BUILD_TIMESTAMP));
+cout << "Project version: " <<  VERSION << endl;
+cout << "Build timestamp:" << BUILD_TIMESTAMP << endl;
 ```
 
 or
 
 ```c++
-Serial.printf("Project version v%s, built %s\n",VERSION,BUILD_TIMESTAMP);
+printf("Project version v%s, built %s\n",VERSION,BUILD_TIMESTAMP);
 ```
 
 ## License
 This program is licensed under MIT License
-
-## Thanks To 
-|  Thanks              |  For                           |
-|----------------------|--------------------------------|
-|<a href="https://www.jetbrains.com/"><img width="200" src="https://raw.githubusercontent.com/sblantipodi/arduino_bootstrapper/master/data/img/jetbrains.png"></a>| For the <a href="https://www.jetbrains.com/pycharm">PyCharm IDE</a> licenses.|
-
