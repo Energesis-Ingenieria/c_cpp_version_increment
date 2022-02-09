@@ -4,7 +4,7 @@ Simple version increment script for C/C++ projects.
 _Some IDE does not have a tool to automatically increment the version number of an app when building it. So I decided to take sblantipodi's idea and use it for other IDEs._
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Energesis Ingeniería](https://img.shields.io/static/v1?label=Energesis&message=Software&color=orange)](https://www.dpsoftware.org)
+[![Energesis Ingeniería](https://img.shields.io/static/v1?label=Energesis&message=Software&color=orange)](https://energesis.es/)
 
 ## How To Use
 1) From the root of your project run
